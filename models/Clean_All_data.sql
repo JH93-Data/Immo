@@ -1,9 +1,15 @@
+
+
+{{ config(materialized='table')}}
+
+
 With Filtered as (
 SELECT CD_YEAR as Y
         ,CD_TYPE_FR
         ,CD_REFNIS as Post_code
         ,CD_REFNIS_FR as Commune
         ,CD_PERIOD as Quarter
+        ,CONCAT(CD_YEAR, " - ", CD_PERIOD) as Y_Quater
         ,MS_TOTAL_TRANSACTIONS as Nbr_trans
         ,MS_P_25 as Price_25
         ,MS_P_50_median as Price_median
@@ -16,7 +22,7 @@ CD_TYPE_FR = "Maisons avec 4 ou plus de façades (type ouvert)" or CD_TYPE_FR = 
 
 Select Y
         ,Quarter
-        , CONCAT(Y, " - ", Quarter)
+        ,Y_Quater
         ,CASE
             when CD_TYPE_FR = "Maisons avec 2 ou 3 façades (type fermé + type demi-fermé)" then "House"
             When CD_TYPE_FR = "Maisons avec 4 ou plus de façades (type ouvert)"  then "Villa"
