@@ -10,4 +10,5 @@ SELECT Code
     ,Province
     ,Commune
     ,Sub_Commune
+    ,Key_com
 FROM {{ ref('List_commune') }}
