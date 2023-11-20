@@ -1,6 +1,7 @@
 
 {{ config(materialized='table')}}
 
+
 WITH db_loca as (
 
 SELECT *
