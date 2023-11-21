@@ -7,5 +7,5 @@ Select  ID_U
   ,Min_price	
   ,Max_price
   ,price		
-  ,Time
+  ,last_update
 FROM {{ ref('Main_table') }}
